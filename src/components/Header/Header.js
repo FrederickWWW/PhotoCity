@@ -5,7 +5,7 @@ import './Header.scss'
 export const Header = () => (
   <div>
     <h1>Photo City</h1>
-
+    <IndexLink to='/'/>
   </div>
 )
 

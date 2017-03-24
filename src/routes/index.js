@@ -7,6 +7,7 @@ import ElapseRoute from './Elapse'
 import RouteRoute from './Route'
 import PageNotFound from './PageNotFound'
 import Redirect from './PageNotFound/redirect'
+import Place from './Place'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -14,13 +15,15 @@ import Redirect from './PageNotFound/redirect'
 export const createRoutes = (store) => ({
   path: '/',
   component: CoreLayout,
-  indexRoute: Home,
+  indexRoute: Place,
   childRoutes: [
     CounterRoute(store),
     ZenRoute(store),
     ElapseRoute(store),
     RouteRoute(store),
+    Place(store),
     PageNotFound(),
+
     Redirect
   ]
 })

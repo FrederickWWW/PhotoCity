@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react'
 import Spinner from 'react-spinkit'
+import CreatePlace from './CreatePlace'
 
 export default class Place extends Component {
   render(){
@@ -15,6 +16,10 @@ export default class Place extends Component {
           { fetching ?
             <Spinner spinnerName='chasing-dots' /> : ''
           }
+        </div>
+        <h1>Photo City</h1>
+        <div>
+          <CreatePlace/>
         </div>
         <div className="place-list">
           { places.map(item => (
