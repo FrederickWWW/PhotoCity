@@ -4,28 +4,29 @@
 
 import React, {Component} from 'react'
 import Spinner from 'react-spinkit'
-import CreatePlace from './CreatePlace'
+// import CreatePlace from './CreatePlace'
 
 export default class Place extends Component {
   render(){
-    const { place:{ fetching, places }} = this.props
+    console.log("The place class has been called !!!!!!!!!!!!!!")
+    const { place:{ isFetching, places }} = this.props
 
     return (
       <div>
         <div className="loading">
-          { fetching ?
+          { isFetching ?
             <Spinner spinnerName='chasing-dots' /> : ''
           }
         </div>
         <h1>Photo City</h1>
-        <div>
-          <CreatePlace/>
-        </div>
+        {/*<div>*/}
+          {/*<CreatePlace/>*/}
+        {/*</div>*/}
         <div className="place-list">
-          { places.map(item => (
+          { places.map((item) => (
 
             <div key={item.id}>
-              <img src={item.img}/>
+              {/*<img src={item.img}/>*/}
               <h3>{item.title}</h3>
             </div>
 
