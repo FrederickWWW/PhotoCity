@@ -4,13 +4,20 @@
 import { injectReducer } from '../../store/reducers'
 
 export default (store) => ({
-  path:'place',
+  path:'',
   getComponent(nextState,cb){
     require.ensure([],(require) =>{
+
       const Place = require('./containers/PlaceContainer').default
       const reducer = require('./modules/place').default
       injectReducer(store, { key:'place', reducer })
       cb(null,Place)
+    })
+  },
+
+  getChildRoutes(nextState,cb){
+    require.exsure([],(require) =>{
+      const CreatePlace = require('./components/CreatePlace').default
     })
   }
 })

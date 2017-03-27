@@ -7,9 +7,19 @@ import Spinner from 'react-spinkit'
 // import CreatePlace from './CreatePlace'
 
 export default class Place extends Component {
+
+
+  componentWillMount(){
+    const {fetchPlace} = this.props.place
+    fetchPlace()
+
+  }
+
   render(){
-    console.log("The place class has been called !!!!!!!!!!!!!!")
-    const { place:{ isFetching, places }} = this.props
+    console.log("Let's see place's props")
+    console.log(this.props)
+
+    const {isFetching, places} = this.props.place
 
     return (
       <div>

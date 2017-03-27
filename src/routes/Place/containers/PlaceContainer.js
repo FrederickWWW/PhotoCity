@@ -4,16 +4,19 @@
 
 import { connect } from 'react-redux'
 import Place from '../components/Place'
+import { fetchPlace } from '../modules/place'
 
-console.log("PlaceContainerrrrrrrrrrrrrrrrrr......")
+console.log("mapping state to props.........")
 
 const mapDispatchToProps = () =>({
-
+  fetchPlace
 })
 
 const mapStateToProps = (state) => ({
-  place: state.place
+  place:state.place
 })
+
 console.log('show the state.place')
-console.log(state.place)
-export default connect(mapStateToProps,mapDispatchToProps)(Place)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Place)

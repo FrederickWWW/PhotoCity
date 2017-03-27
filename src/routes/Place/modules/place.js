@@ -4,8 +4,8 @@
 const RECEIVE_PLACE = 'RECEIVE_PLACE'
 const REQUEST_PLACE = 'REQUEST_PLACE'
 
+console.log("Place module has been called....")
 
-console.log("module of place@@!@!@!@!@!@!@")
 
 function requestPlace() {
   return {
@@ -28,7 +28,7 @@ export function fetchPlace() {
     if (getState().place.isFetching) return
 
     dispatch(requestPlace())
-    return fetch('lalala') // todo
+    return fetch('lalala') // todo 要更新 state 哟
       .then(data => dispatch(receivePlace(data)))
   }
 }
@@ -43,7 +43,7 @@ const ACTION_HANDLERS = {
 
 }
 
-
+console.log("defining the initial state!!!!")
 // --------
 // Reducer
 // --------

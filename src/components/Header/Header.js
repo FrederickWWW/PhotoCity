@@ -3,9 +3,10 @@ import { IndexLink, Link } from 'react-router'
 import './Header.scss'
 
 export const Header = () => (
-  <div>
-    <h1>Photo City</h1>
-    <IndexLink to='/'/>
+  <div className="header">
+    <div className="new-place">
+      <Link to='/place/create'> 新建地点</Link>
+    </div>
   </div>
 )
 
