@@ -4,7 +4,6 @@
 const RECEIVE_PLACE = 'RECEIVE_PLACE'
 const REQUEST_PLACE = 'REQUEST_PLACE'
 
-console.log("Place module has been called....")
 
 
 function requestPlace() {
@@ -43,7 +42,6 @@ const ACTION_HANDLERS = {
 
 }
 
-console.log("defining the initial state!!!!")
 // --------
 // Reducer
 // --------

@@ -10,13 +10,12 @@ export default class Place extends Component {
 
 
   componentWillMount(){
-    const {fetchPlace} = this.props.place
-    fetchPlace()
+    // const {fetchPlace} = this.props.place
+    // fetchPlace()
 
   }
 
   render(){
-    console.log("Let's see place's props")
     console.log(this.props)
 
     const {isFetching, places} = this.props.place

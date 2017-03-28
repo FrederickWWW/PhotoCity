@@ -8,6 +8,7 @@ import RouteRoute from './Route'
 import PageNotFound from './PageNotFound'
 import Redirect from './PageNotFound/redirect'
 import PlaceRoute from './Place'
+import CreatePlace from './Place/routes/CreatePlace'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -19,6 +20,7 @@ export const createRoutes = (store) => ({
   childRoutes: [
     // CounterRoute(store),
     ZenRoute(store),
+    CreatePlace(),
     // ElapseRoute(store),
     // RouteRoute(store),
     // PlaceRoute(store),

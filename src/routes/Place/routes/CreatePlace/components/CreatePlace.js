@@ -1,9 +1,9 @@
 /**
  * Created by Frederick on 2017/3/24.
  */
-import react, {component} from 'react'
+import React, {Component} from 'react'
 
-export default class createPlace extends component{
+export default class CreatePlace extends Component{
   render(){
     return(
       <div>
