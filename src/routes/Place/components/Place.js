@@ -8,12 +8,14 @@ import Spinner from 'react-spinkit'
 
 export default class Place extends Component {
 
-
   componentWillMount(){
     // const {fetchPlace} = this.props.place
-    // fetchPlace()
-
+    // todo fetchPlace()
   }
+
+
+
+
 
   render(){
     console.log(this.props)
