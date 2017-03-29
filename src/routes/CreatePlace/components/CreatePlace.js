@@ -4,12 +4,21 @@
 import React, {Component} from 'react'
 
 
-
 export default class CreatePlace extends Component{
 
   componentWillMount(){
-    // const {fetchPlace} = this.props.place
-    // todo fetchPlace()
+    this.firebaseRef = firebase.database().ref('place/places')
+    this.firebaseRef.limitToFirst(8).on('value',  (dataSnapshot) => {
+      let items = []
+      dataSnapshot.forEach( (childSnapshot) => {
+        let item = childSnapshot.val()
+        item['.key'] = childSnapshot.key
+        items.push(item)
+      })
+      this.setState({
+        items:items
+      })
+    })
   }
 
   componentWillUnmount(){
@@ -18,12 +27,20 @@ export default class CreatePlace extends Component{
 
   onChange(e){
     this.setState({title: e.target.value})
+    // todo 好像有问题，component 不应该直接操作 state 吧？
   }
 
-  handleSubmit(){
+  handleSubmit(e){
     e.preventDefault()
-    //todo if this.state.title && blahblahblah, push to firebase
-    // todo setState to null
+    if(this.props.title && this.props.title.trim().length !== 0){
+      this.firebaseRef.push({
+        title: this.props.title
+      })
+      //todo 好像不该 setState?
+      this.setState({
+        title:''
+      })
+    }
   }
 
 
