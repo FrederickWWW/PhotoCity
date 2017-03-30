@@ -8,7 +8,7 @@ import RouteRoute from './Route'
 import PageNotFound from './PageNotFound'
 import Redirect from './PageNotFound/redirect'
 import PlaceRoute from './Place'
-import CreatePlace from './Place/routes/CreatePlace'
+import CreatePlace from './CreatePlace'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */

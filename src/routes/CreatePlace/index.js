@@ -8,7 +8,6 @@ export default (store) =>({
 
   getComponent(nextState, cb){
     require.ensure([],(require)=>{
-      console.log("Route in Createplace is working!!!!!");
       const CreatePlace = require('./components/CreatePlace').default
       cb(null,CreatePlace)
     })

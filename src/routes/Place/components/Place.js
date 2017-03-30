@@ -8,14 +8,24 @@ import Spinner from 'react-spinkit'
 
 export default class Place extends Component {
 
-  componentWillMount(){
-    // const {fetchPlace} = this.props.place
-    // todo fetchPlace()
-  }
-
-
-
-
+  // componentWillMount(){
+  //   this.firebaseRef = firebase.database().ref('place/places')
+  //   this.firebaseRef.limitToFirst(8).on('value',  (dataSnapshot) => {
+  //     let items = []
+  //     dataSnapshot.forEach( (childSnapshot) => {
+  //       let item = childSnapshot.val()
+  //       item['.key'] = childSnapshot.key
+  //       items.push(item)
+  //     })
+  //     this.setState({
+  //       items:items
+  //     })
+  //   })
+  // }
+  //
+  // componentWillUnmount(){
+  //   this.firebaseRef.off()
+  // }
 
   render(){
     console.log(this.props)
