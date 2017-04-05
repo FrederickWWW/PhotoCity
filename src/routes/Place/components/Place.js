@@ -35,7 +35,6 @@ export default class Place extends Component {
             </div>
             ))}
         </div>
-        <button onClick={fetchDb}>搞下DB咯</button>
       </div>
     )
   }
