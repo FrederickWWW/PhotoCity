@@ -1,8 +1,12 @@
+/**
+ * Created by Frederick on 2017/4/4.
+ */
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
+import DevTools from '../containers/DevTools'
 
 export default (initialState = {}) => {
   // ======================================================
@@ -19,17 +23,21 @@ export default (initialState = {}) => {
     if (typeof devToolsExtension === 'function') {
       enhancers.push(devToolsExtension())
     }
+    if(typeof DevTools.instrument() === 'function'){
+      enhancers.push(DevTools.instrument())
+    }
   }
 
   // ======================================================
   // Store Instantiation and HMR Setup
   // ======================================================
+
   const store = createStore(
     makeRootReducer(),
     initialState,
     compose(
       applyMiddleware(...middleware),
-      ...enhancers
+      ...enhancers,
     )
   )
   store.asyncReducers = {}
@@ -43,6 +51,8 @@ export default (initialState = {}) => {
       store.replaceReducer(reducers(store.asyncReducers))
     })
   }
+
+
 
   return store
 }

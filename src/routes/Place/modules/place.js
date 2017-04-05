@@ -1,56 +1,65 @@
 /**
  * Created by Frederick on 2017-03-22.
  */
-const RECEIVE_PLACE = 'RECEIVE_PLACE'
-const REQUEST_PLACE = 'REQUEST_PLACE'
+
+'use strict'
+
+import { getRef } from '../../../main'
+
+const ref = getRef('/place/places')
+const RECEIVE_DATA = 'RECEIVE_DATA'
 
 
-
-function requestPlace() {
-  return {
-    type: REQUEST_PLACE
-  }
-}
-
-export function receivePlace (items){
-  return {
-    type: RECEIVE_PLACE,
-    payload:{
-      places:items
-    }
-  }
-}
-
-
-export function fetchPlace() {
+export function fetchDb () {
   return (dispatch, getState) => {
-    if (getState().place.isFetching) return
+      console.log("shoot, why it works here????")
+      return ref.on('child_added',snapshot=> {
+      let newPost = snapshot.val()
+      dispatch(receivePlace(newPost))
 
-    dispatch(requestPlace())
-    return fetch('lalala') // todo 要更新 state 哟
-      .then(data => dispatch(receivePlace(data)))
+      console.log("show state: ")
+      console.log(getState())
+    }, error =>{
+      console.log("show error....")
+      console.log(error)
+    })
   }
 }
+
+
+
+let availableId = 0
+export const receivePlace = data =>({
+  type:RECEIVE_DATA,
+  payload:{
+    id:availableId++,
+    title:data.title
+  }
+})
+
+export const actions = {
+  receivePlace,
+  fetchDb
+}
+
 
 const ACTION_HANDLERS = {
-  [REQUEST_PLACE]: (state) => {
-    return ({...state, isFetching: true})
-  },
-  [RECEIVE_PLACE]:(state, action) => {
-    return ({...state, isFetching: false, places:state.place.concat(action.payload)})
+  [RECEIVE_DATA]:(state,action) => {
+    return ({...state, places:state.places.concat(action.payload)})
   }
-
 }
 
 // --------
 // Reducer
 // --------
 const initialState = {
-  isFetching:true,
-  places:[{'id':'1','title':'it is finally here!'},{'id':'2','title':'nononono!'}]
+  places:[{
+    id:3,
+    title:'cannot solve this?'
+  }]
 }
 
-export default function (state = initialState, action) {
+export default function (state=initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
   return handler ? handler(state, action) : state
 }

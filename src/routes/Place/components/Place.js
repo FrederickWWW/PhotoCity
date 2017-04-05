@@ -2,47 +2,30 @@
  * Created by Frederick on 2017-03-22.
  */
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Spinner from 'react-spinkit'
-// import CreatePlace from './CreatePlace'
 
 export default class Place extends Component {
 
-  // componentWillMount(){
-  //   this.firebaseRef = firebase.database().ref('place/places')
-  //   this.firebaseRef.limitToFirst(8).on('value',  (dataSnapshot) => {
-  //     let items = []
-  //     dataSnapshot.forEach( (childSnapshot) => {
-  //       let item = childSnapshot.val()
-  //       item['.key'] = childSnapshot.key
-  //       items.push(item)
-  //     })
-  //     this.setState({
-  //       items:items
-  //     })
-  //   })
-  // }
-  //
-  // componentWillUnmount(){
-  //   this.firebaseRef.off()
-  // }
+  componentWillMount(){
+    const fetchDb = this.props.fetchDb
+    fetchDb()
+  }
 
   render(){
-    console.log(this.props)
+    const {places} = this.props.place
+    const {fetchDb} = this.props
 
-    const {isFetching, places} = this.props.place
 
     return (
       <div>
         <div className="loading">
-          { isFetching ?
-            <Spinner spinnerName='chasing-dots' /> : ''
-          }
+
+            <Spinner spinnerName='chasing-dots' />
+
         </div>
         <h1>Photo City</h1>
-        {/*<div>*/}
-          {/*<CreatePlace/>*/}
-        {/*</div>*/}
+
         <div className="place-list">
           { places.map((item) => (
 
@@ -50,12 +33,9 @@ export default class Place extends Component {
               {/*<img src={item.img}/>*/}
               <h3>{item.title}</h3>
             </div>
-
-
-
-
             ))}
         </div>
+        <button onClick={fetchDb}>搞下DB咯</button>
       </div>
     )
   }
@@ -63,5 +43,8 @@ export default class Place extends Component {
 }
 
 Place.propTypes = {
-  place: React.PropTypes.object.isRequired
+  places: React.PropTypes.array,
+  fetchDb:React.PropTypes.func.isRequired
+
+
 }

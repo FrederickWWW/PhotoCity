@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
-import AppContainer from './containers/AppContainer'
+import AppContainer from './containers/index'
+const wilddog = require('wilddog')
 
 // ========================================================
 // Store Instantiation
@@ -62,6 +63,18 @@ if (__DEV__) {
     )
   }
 }
+
+const config = {
+  syncURL: "https://testyouready.wilddogio.com" //输入节点 URL
+};
+wilddog.initializeApp(config);
+
+
+export const getRef = (url) =>{
+  return  wilddog.sync().ref(url)
+}
+console.log("the wilddog app has been initialized....")
+
 
 // ========================================================
 // Go!

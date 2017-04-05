@@ -89,7 +89,6 @@
     "debug": "^2.2.0",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.9.0",
-    "firebase": "^3.7.3",
     "fs-extra": "^1.0.0",
     "html-webpack-plugin": "^2.22.0",
     "imports-loader": "^0.7.0",
@@ -110,6 +109,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.14",
+    "wilddog": "^2.5.4",
     "yargs": "^6.3.0"
   },
   "devDependencies": {
@@ -140,6 +140,9 @@
     "phantomjs-prebuilt": "^2.1.12",
     "react-addons-test-utils": "^15.0.0",
     "redbox-react": "^1.2.10",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
     "webpack-dev-middleware": "^1.6.1",
