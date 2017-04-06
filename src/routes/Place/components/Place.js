@@ -14,7 +14,20 @@ export default class Place extends Component {
 
   render(){
     const {places} = this.props.place
-    console.log("show the places we've got: ", places)
+    var items = [];
+    // console.log("show the places we've got: ", places)
+    // console.log(Array.isArray(places))
+    for(let item in places){
+      console.log("item is: " + item)
+
+      if(places.hasOwnProperty(item) && places[item]){
+        places[item][key] = item
+        items.push(places[item])
+      }
+    }
+
+    console.log(items,"------------")
+
 
 
     return (
@@ -27,13 +40,15 @@ export default class Place extends Component {
         <h1>Photo City</h1>
 
         <div className="place-list">
-          { places.map((item) => (
 
-            <div key={item.id}>
-              {/*<img src={item.img}/>*/}
-              <h3>{item.title}</h3>
-            </div>
-            ))}
+          {/*{items}*/}
+          {/*{ items.map((item, index) => (*/}
+
+            {/*<div key={index}>*/}
+              {/*/!*<img src={item.img}/>*!/*/}
+              {/*<h3>{item.value.title}</h3>*/}
+            {/*</div>*/}
+            {/*))}*/}
         </div>
       </div>
     )
