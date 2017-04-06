@@ -14,7 +14,7 @@ export default class Place extends Component {
 
   render(){
     const {places} = this.props.place
-    const {fetchDb} = this.props
+    console.log("show the places we've got: ", places)
 
 
     return (

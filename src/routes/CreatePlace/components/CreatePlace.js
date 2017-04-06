@@ -32,34 +32,24 @@ export default class CreatePlace extends Component{
       img:"6566666",
       title: this.state.title.trim()
     }
-    ref.transaction((currentId) => {
-      let newId = (currentId||0) + 1
-      console.log('new Id is:',newId)
-      return newId
-    },(err,committed,snapshot)=>{
 
-      if(err){
-        console.log('Transaction 失败' , err)
-      } else if (!committed) {
-        console.log('退出...不知道为啥')
-      } else if(committed){
-        console.log('添加成功!')
-        let id = snapshot.val()
-        console.log('show id:')
-        console.log(id)
-        data['place_id']=id
-        ref.push(data)
-          .then(console.log("test data has been written....."))
-          .catch("It's not been written!!!!!")
-      }
-    })
-    // this.props.addPlace(data)
+    ref.push(data)
+      .then(newRef=>{
+        console.log('Let us take a look at newRef: ',newRef)
+      })
+      .catch(err=>{
+        console.info('push node failed', err.code, err)
+      })
+
+
     e.preventDefault()
     this.redirect()
+
   }
 
   redirect(e){
     this.props.router.push('/place/create')
+    console.log("Yo, i redirected lik a good baby")
   }
 
   render(){

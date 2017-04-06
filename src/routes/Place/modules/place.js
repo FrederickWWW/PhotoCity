@@ -13,12 +13,13 @@ const RECEIVE_DATA = 'RECEIVE_DATA'
 export function fetchDb () {
   return (dispatch, getState) => {
       console.log("shoot, why it works here????")
-      return ref.on('child_added',snapshot=> {
-      let newPost = snapshot.val()
-      dispatch(receivePlace(newPost))
+      return ref.once('value',snapshot=> {
+      let placeList = snapshot.val()
+      dispatch(receivePlace(placeList))
 
-      console.log("show state: ")
-      console.log(getState())
+
+      console.log("show placeList: ")
+      console.log(placeList)
     }, error =>{
       console.log("show error....")
       console.log(error)
@@ -28,12 +29,10 @@ export function fetchDb () {
 
 
 
-let availableId = 0
 export const receivePlace = data =>({
   type:RECEIVE_DATA,
   payload:{
-    id:availableId++,
-    title:data.title
+    places:data
   }
 })
 
@@ -45,7 +44,7 @@ export const actions = {
 
 const ACTION_HANDLERS = {
   [RECEIVE_DATA]:(state,action) => {
-    return ({...state, places:state.places.concat(action.payload)})
+    return ({...state, places:action.payload.places})
   }
 }
 
@@ -53,10 +52,7 @@ const ACTION_HANDLERS = {
 // Reducer
 // --------
 const initialState = {
-  places:[{
-    id:3,
-    title:'cannot solve this?'
-  }]
+  places:[]
 }
 
 export default function (state=initialState, action) {
